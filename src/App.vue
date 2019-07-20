@@ -1,11 +1,31 @@
 <template>
-  <div class="container">
-    <p>First line</p>
-  </div>
+    <div class="container">
+        <app-new-quote @quoteAdded="newQuote"></app-new-quote>
+        <app-quote-grid :quotes="quotes"></app-quote-grid>
+    </div>
 </template>
 
 <script>
-  export default {};
+import QuoteGrid from "./components/QuoteGrid.vue";
+import NewQuote from "./components/NewQuote.vue";
+
+export default {
+    components: {
+        appQuoteGrid: QuoteGrid,
+        appNewQuote: NewQuote
+    },
+    data() {
+        return {
+            quotes: ["Just a quote to see something"],
+            maxQuotes: 10
+        };
+    },
+    methods: {
+        newQuote(quote) {
+            this.quotes.push(quote);
+        }
+    }
+};
 </script>
 
 <style></style>
